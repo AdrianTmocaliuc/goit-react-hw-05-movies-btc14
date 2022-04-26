@@ -1,0 +1,14 @@
+.addInformation_MenuBar{
+    padding: 10px 10px;
+   
+    border-bottom: 1px solid black;
+    
+        a{
+            color: black;
+            text-decoration: none;
+            &:not(:last-child) {
+                margin-right: 10px;
+            }
+        }
+    
+}

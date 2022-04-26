@@ -1,0 +1,11 @@
+.main_menuBar{
+   width: 100%;
+   padding: 20px;
+   a:not(:last-child){
+      margin-right: 10px;
+      
+   }
+   >*{
+      text-decoration: none;
+   }
+}
