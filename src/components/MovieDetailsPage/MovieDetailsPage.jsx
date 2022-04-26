@@ -27,7 +27,7 @@ function MovieDetailsPage() {
     axiosData();
   }, [axiosData]);
 
-  // console.log("movieDetails", movieDetails);
+  console.log("movieDetails", movieDetails);
   // console.log("movieDetails", movieDetails !== {});
 
   return (

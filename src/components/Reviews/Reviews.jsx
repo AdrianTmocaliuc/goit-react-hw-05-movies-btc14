@@ -12,20 +12,19 @@ function Reviews({ movieId }) {
     }
     const showMovieDet = await moviesApi.getMovieReviews(movieId);
     setMovieReviews(showMovieDet.data);
-  }, [moviesApi]);
+  }, [movieId]);
 
   useEffect(() => {
     axiosData();
   }, [axiosData]);
 
-  console.log("Review=>>", movieReviews.results[0].content);
-  // console.log("Review!", movieReviews.results[0].content);
+  console.log("Review=>>", movieReviews);
   // console.log("Review!", movieReviews.results[0].content);
   return (
     <div className={s.review}>
       <></>
       <p>
-        {!!movieReviews.results
+        {!!movieReviews?.results?.length
           ? `${movieReviews.results[0].content}`
           : "We don't have any reviews for this movie."}
       </p>
