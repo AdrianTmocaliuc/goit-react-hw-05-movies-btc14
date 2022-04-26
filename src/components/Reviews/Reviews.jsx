@@ -20,6 +20,7 @@ function Reviews({ movieId }) {
 
   console.log("Review=>>", movieReviews.results[0].content);
   // console.log("Review!", movieReviews.results[0].content);
+  // console.log("Review!", movieReviews.results[0].content);
   return (
     <div className={s.review}>
       <></>
