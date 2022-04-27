@@ -30,7 +30,7 @@ function MoviesPage() {
     setInputText(Text);
   };
 
-  console.log("movies", movies);
+  // console.log("movies", movies);
 
   return (
     <div>

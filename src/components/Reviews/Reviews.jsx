@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import s from "./Review.module.scss";
 import MoviesApi from "Services/ApiService";
+import RenderList from "components/Utilities/RenderList";
 const moviesApi = new MoviesApi();
 
 function Reviews({ movieId }) {
@@ -22,12 +23,11 @@ function Reviews({ movieId }) {
   // console.log("Review!", movieReviews.results[0].content);
   return (
     <div className={s.review}>
-      <></>
-      <p>
-        {!!movieReviews?.results?.length
-          ? `${movieReviews.results[0].content}`
-          : "We don't have any reviews for this movie."}
-      </p>
+      {!!movieReviews?.results?.length ? (
+        <RenderList reviewsList={movieReviews.results} />
+      ) : (
+        "We don't have any reviews for this movie."
+      )}
     </div>
   );
 }

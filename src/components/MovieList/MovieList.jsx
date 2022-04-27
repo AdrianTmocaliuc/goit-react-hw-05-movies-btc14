@@ -7,12 +7,13 @@ function MovieList({ listItems }) {
   return (
     <>
       {listItems.map((movie) => {
+        // console.log("movie", movie);
         return (
           <li key={movie.id}>
             <Link
               to={{
                 pathname: `/movies/${movie.id}`,
-                state: { movieId: movie.id },
+                state: { movieId: movie.id, movie: movie },
               }}
             >
               {movie.name || movie.original_title}

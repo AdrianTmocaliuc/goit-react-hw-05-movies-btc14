@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import s from "./FormInput.module.scss";
 
 function FormInput({ onSubmit }) {
   const [inputText, setInputText] = useState("");
@@ -18,7 +19,7 @@ function FormInput({ onSubmit }) {
   };
 
   return (
-    <div>
+    <div className={s.input}>
       <form action="" onSubmit={onSubmitForm}>
         <input
           type="text"

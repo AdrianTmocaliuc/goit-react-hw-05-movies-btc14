@@ -1,11 +1,13 @@
 import { useState, useCallback, useEffect } from "react";
 import { Switch, Route, useParams, useRouteMatch } from "react-router-dom";
+import { lazy, Suspense } from "react";
 
 import MoviesApi from "Services/ApiService";
-import MovieDetailsItem from "./MovieDetailsItem";
 import AdditionalInformationBar from "pages/AdditionalInformationBar/AdditionalInformationBar";
-import Cast from "components/Cast/Cast";
-import Reviews from "components/Reviews/Reviews";
+
+const MovieDetailsItem = lazy(() => import("./MovieDetailsItem"));
+const Cast = lazy(() => import("components/Cast/Cast"));
+const Reviews = lazy(() => import("components/Reviews/Reviews"));
 
 const moviesApi = new MoviesApi();
 
@@ -19,17 +21,15 @@ function MovieDetailsPage() {
       return;
     }
     const showMovieDet = await moviesApi.getMovieDetails(movieId);
-    // console.log("showMovieDet", showMovieDet);
+    console.log("showMovieDet", showMovieDet);
     setMovieDetails(showMovieDet.data);
   }, [movieId]);
 
   useEffect(() => {
     axiosData();
   }, [axiosData]);
-
-  console.log("movieDetails", movieDetails);
+  // console.log("movieDetails", movieDetails);
   // console.log("movieDetails", movieDetails !== {});
-
   return (
     <div>
       <MovieDetailsItem movie={movieDetails} />
@@ -38,14 +38,16 @@ function MovieDetailsPage() {
       ) : (
         <h3>Nothing Found</h3>
       )}
-      <Switch>
-        <Route path={`${url}/cast`}>
-          <Cast movieId={movieId} />
-        </Route>
-        <Route path={`${url}/reviews`}>
-          <Reviews movieId={movieId} />
-        </Route>
-      </Switch>
+      <Suspense fallback={<h3>In load ...</h3>}>
+        <Switch>
+          <Route path={`${url}/cast`}>
+            <Cast movieId={movieId} />
+          </Route>
+          <Route path={`${url}/reviews`}>
+            <Reviews movieId={movieId} />
+          </Route>
+        </Switch>
+      </Suspense>
     </div>
   );
 }
