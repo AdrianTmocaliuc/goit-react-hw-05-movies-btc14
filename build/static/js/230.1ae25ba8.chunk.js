@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkstart_react_template=self.webpackChunkstart_react_template||[]).push([[230],{4230:function(t,e,r){r.r(e),r.d(e,{default:function(){return u}});r(2791);var n="NotFoundView_error__ITboH",a=r(184);var u=function(){return(0,a.jsx)("div",{className:n,children:(0,a.jsx)("h1",{children:"Not found \u2639"})})}}}]);
+//# sourceMappingURL=230.1ae25ba8.chunk.js.map
