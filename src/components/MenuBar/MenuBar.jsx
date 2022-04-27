@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
-import s from "./MenuBar.modal.scss";
+import s from "./MenuBar.module.scss";
 
 function MenuBar() {
   return (
-    <div className="main_menuBar">
+    <div className={s.main_menuBar}>
       <NavLink
         to="/"
         style={{ color: "black" }}

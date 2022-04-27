@@ -12,8 +12,8 @@ const NotFoundView = lazy(() => import("./NotFoundView/NotFoundView"));
 export const App = () => {
   return (
     <>
-      <Suspense fallback={<div>Loading...</div>}>
-        <MenuBar />
+      <MenuBar />
+      <Suspense fallback={<div>In process...</div>}>
         <Switch>
           <Route path="/" exact>
             <HomePage />

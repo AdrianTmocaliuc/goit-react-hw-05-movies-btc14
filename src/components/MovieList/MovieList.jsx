@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 function MovieList({ listItems }) {
-  // const match = useRouteMatch();
-  // console.log("match", match);
   return (
     <>
       {listItems.map((movie) => {
@@ -26,3 +25,13 @@ function MovieList({ listItems }) {
 }
 
 export default MovieList;
+
+MovieList.propTypes = {
+  listItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string,
+      original_title: PropTypes.string,
+    })
+  ),
+};

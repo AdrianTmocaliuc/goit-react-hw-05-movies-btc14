@@ -1,5 +1,6 @@
 import RenderList from "components/Utilities/RenderList";
 import React, { useCallback, useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
 import MoviesApi from "Services/ApiService";
 const moviesApi = new MoviesApi();
@@ -29,3 +30,7 @@ function Cast({ movieId }) {
 }
 
 export default Cast;
+
+Cast.propTypes = {
+  movieId: PropTypes.string.isRequired,
+};

@@ -1,6 +1,7 @@
 import MoviesApi from "Services/ApiService";
 import { useCallback, useEffect, useState } from "react";
 import MovieList from "components/MovieList/MovieList";
+import PropTypes from "prop-types";
 
 const moviesApi = new MoviesApi();
 
@@ -24,3 +25,7 @@ function HomePage() {
 }
 
 export default HomePage;
+
+HomePage.propTypes = {
+  movies: PropTypes.array,
+};

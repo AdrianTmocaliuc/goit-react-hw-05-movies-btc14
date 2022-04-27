@@ -4,18 +4,6 @@ import axios from "axios";
 
 axios.defaults.baseURL = "https://api.themoviedb.org/3";
 
-const searchKey = {
-  trending: "https://api.themoviedb.org/3/trending/all/day?api_key=<<api_key>>",
-  findMovie:
-    "https://api.themoviedb.org/3/search/movie?api_key=<<api_key>>&query=''&language=en-US&page=1&include_adult=false",
-  details:
-    "https://api.themoviedb.org/3/movie/{movie_id}?api_key=<<api_key>>&language=en-US",
-  credits:
-    "https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=<<api_key>>&language=en-US",
-  reviews:
-    "https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key=<<api_key>>&language=en-US&page=1",
-};
-
 export default class MoviesApi {
   API_KEY = "f7d6a30af5958d06330f7e1173f523fb";
 
@@ -49,7 +37,7 @@ export default class MoviesApi {
       );
       return response;
     } catch (error) {
-      alert("Something went wrong");
+      alert("Less information !");
     }
   }
   async getMovieCredits(id) {

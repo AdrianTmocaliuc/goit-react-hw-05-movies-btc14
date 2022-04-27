@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import s from "./FormInput.module.scss";
+import PropTypes from "prop-types";
 
 function FormInput({ onSubmit }) {
   const [inputText, setInputText] = useState("");
@@ -34,3 +35,8 @@ function FormInput({ onSubmit }) {
 }
 
 export default FormInput;
+
+FormInput.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  inputText: PropTypes.string,
+};

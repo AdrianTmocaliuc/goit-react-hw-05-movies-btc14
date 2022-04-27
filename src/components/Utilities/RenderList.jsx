@@ -1,6 +1,7 @@
 import React from "react";
 import s from "./RenderList.module.scss";
 import defImage from "components/images/picture.jpg";
+import PropTypes from "prop-types";
 
 function RenderList({ castList, reviewsList }) {
   // console.log("castList", castList);
@@ -37,3 +38,20 @@ function RenderList({ castList, reviewsList }) {
 }
 
 export default RenderList;
+
+RenderList.propTypes = {
+  castList: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      profile_path: PropTypes.string,
+      name: PropTypes.string.isRequired,
+    })
+  ),
+  reviewsList: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+    })
+  ),
+};

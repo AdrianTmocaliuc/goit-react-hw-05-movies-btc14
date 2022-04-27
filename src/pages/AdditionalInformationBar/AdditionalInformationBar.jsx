@@ -1,8 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import s from "./AdditionalInformationBar.module.scss";
+import PropTypes from "prop-types";
 
 function AdditionalInformationBar({ path }) {
+  console.log("path", path);
   return (
     <div className={s.addInformation_MenuBar} style={{ padding: "15px" }}>
       <h4>Additional information</h4>
@@ -23,3 +25,7 @@ function AdditionalInformationBar({ path }) {
 }
 
 export default AdditionalInformationBar;
+
+AdditionalInformationBar.propTypes = {
+  path: PropTypes.string.isRequired,
+};
