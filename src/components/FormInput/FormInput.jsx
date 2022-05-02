@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import s from "./FormInput.module.scss";
 import PropTypes from "prop-types";
+import { useLocation } from "react-router-dom";
 
 function FormInput({ onSubmit }) {
   const [inputText, setInputText] = useState("");
@@ -9,6 +10,9 @@ function FormInput({ onSubmit }) {
     setInputText(value);
   };
 
+  const location = useLocation();
+  const moviesRef = useRef();
+
   const onSubmitForm = (e) => {
     e.preventDefault();
     if (!inputText.trim()) {
@@ -16,8 +20,11 @@ function FormInput({ onSubmit }) {
     }
     // console.log("inputText", inputText);
     onSubmit(inputText);
+    moviesRef.current = inputText;
     setInputText("");
   };
+
+  // console.log("moviesRef", moviesRef);
 
   return (
     <div className={s.input}>

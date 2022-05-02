@@ -5,7 +5,7 @@ const MenuBar = lazy(() => import("./MenuBar/MenuBar"));
 const HomePage = lazy(() => import("pages/HomePage/HomePage"));
 const MoviesPage = lazy(() => import("pages/MoviesPage/MoviesPage"));
 const MovieDetailsPage = lazy(() =>
-  import("./MovieDetailsPage/MovieDetailsPage")
+  import("pages/MovieDetailsPage/MovieDetailsPage")
 );
 const NotFoundView = lazy(() => import("./NotFoundView/NotFoundView"));
 

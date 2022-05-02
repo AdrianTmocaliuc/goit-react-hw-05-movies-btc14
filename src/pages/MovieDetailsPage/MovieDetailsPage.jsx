@@ -1,17 +1,18 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import {
   Switch,
   Route,
   useParams,
   useRouteMatch,
   useLocation,
-  // Redirect,
+  useHistory,
 } from "react-router-dom";
 import { lazy, Suspense } from "react";
 
 import MoviesApi from "Services/ApiService";
-import AdditionalInformationBar from "pages/AdditionalInformationBar/AdditionalInformationBar";
+import AdditionalInformationBar from "components/AdditionalInformationBar/AdditionalInformationBar";
 import PropTypes from "prop-types";
+import Button from "components/Utilities/Button";
 
 const MovieDetailsItem = lazy(() => import("./MovieDetailsItem"));
 const Cast = lazy(() => import("components/Cast/Cast"));
@@ -23,33 +24,43 @@ function MovieDetailsPage() {
   const [movieDetails, setMovieDetails] = useState({});
   const { url } = useRouteMatch();
   const { movieId } = useParams();
+  const history = useHistory();
 
-  const test = useLocation();
-  const movie = test?.state?.movie;
+  const location = useLocation();
+  const movie = location?.state?.movie;
   const checkMovie = !!Object.keys(movieDetails).length ? movieDetails : movie;
-  // console.log("movieDetails", !!Object.keys(movieDetails).length);
-  // console.log("checkMovie", checkMovie);
+
+  const moviesRef = useRef(location);
+  // const testRef = useRef();
+  // console.log("testRef", testRef);
 
   const axiosData = useCallback(async () => {
     if (!moviesApi) {
       return;
     }
     const showMovieDet = await moviesApi.getMovieDetails(movieId);
-    // console.log("showMovieDet", showMovieDet);
 
     if (showMovieDet) {
       setMovieDetails(showMovieDet.data);
     }
   }, [movieId]);
 
-  console.log("movieDetails", movieDetails);
-  console.log("movie", movie);
-
   useEffect(() => {
     axiosData();
   }, [axiosData]);
+
+  const onClickButton = () => {
+    // history.goBack();
+    // history.push(history.location.state.from.pathName || "/");
+    // history.push({ ...moviesRef.current.state.from });
+    // console.log("history", history);
+  };
+  // console.log("moviesRef", moviesRef);
+  // console.log("history", history);
+
   return (
     <div>
+      <Button title="Go Back" onClick={onClickButton} />
       <MovieDetailsItem movie={checkMovie} />
       {!!Object.keys(movieDetails).length && (
         <AdditionalInformationBar path={url} />
